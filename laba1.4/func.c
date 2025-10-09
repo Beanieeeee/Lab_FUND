@@ -27,16 +27,13 @@ float e_pred(float eps) {
 
 float e_yr(float eps) {
     float x = 2.0f;
-    float x_new;
-    while (1) {
-        float fx  = logf(x) - 1.0f;
-        float dfx = 1.0f / x;
-        x_new = x - fx / dfx;
-        if (fabsf(x_new - x) < eps)
-            break;
+    for (int k = 0; k < 100; ++k) {
+        float x_new = x * (2.0f - logf(x));    
+        if (fabsf(x_new - x) <= eps * fmaxf(1.0f, fabsf(x_new)))
+            return x_new;
         x = x_new;
     }
-    return x_new;
+    return x;
 }
 
 
@@ -63,4 +60,73 @@ float ln_sum(float eps){
         n++;
     } while (fabsf(t) > eps && n < 10000000);
     return ln;
+}
+
+float sq_sum(float eps){
+    float sq = 0.0f; 
+    int k = 2;
+    float t;
+    do {
+        t = powf(2, powf(2, -k));
+        sq *= t;
+        k++;
+    } while (fabsf(t) > eps && k < 10000000);
+    return sq;
+}
+
+float y_sum(float eps){
+    float y = 0.0f; 
+    int k = 2;
+    float t;
+    do {
+        t = (1 / pow(sqrtf(k), 2) - 1 / k );
+        sq += t;
+        k++;
+    } while (fabsf(t) > eps && k < 10000000);
+    return y - 3.1415927f / 6 ;
+}
+
+
+float pi_yr(float eps) {
+    float x = 3.0f;
+    for (int k = 0; k < 100; ++k) {
+        float x_new = x - ((cos(x) + 1.0f) / -sin(x));    
+        if (fabsf(x_new - x) <= eps * fmaxf(1.0f, fabsf(x_new)))
+            return x_new;
+        x = x_new;
+    }
+    return x;
+}
+
+float ln_yr(float eps) {
+    float x = 2.0f;
+    for (int k = 0; k < 100; ++k) {
+        float x_new = x - (expf(x) - 2)/expf(x);    
+        if (fabsf(x_new - x) <= eps * fmaxf(1.0f, fabsf(x_new)))
+            return x_new;
+        x = x_new;
+    }
+    return x;
+}
+
+float sq_yr(float eps) {
+    float x = 1.0f;
+    for (int k = 0; k < 100; ++k) {
+        float x_new = x - (pow(x, 2) - 2.0f)/2.0f * x;    
+        if (fabsf(x_new - x) <= eps * fmaxf(1.0f, fabsf(x_new)))
+            return x_new;
+        x = x_new;
+    }
+    return x;
+}
+
+float y_yr(float eps) {
+    float x = 1.0f;
+    for (int k = 0; k < 100; ++k) {
+        float x_new = x - (pow(x, 2) - 2)/2 * x;    
+        if (fabsf(x_new - x) <= eps * fmaxf(1.0f, fabsf(x_new)))
+            return x_new;
+        x = x_new;
+    }
+    return x;
 }

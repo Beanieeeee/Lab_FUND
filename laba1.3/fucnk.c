@@ -1,4 +1,6 @@
 #include "fucnk.h"
+#include <stdio.h>
+#include <math.h>
 
 void krat(int a, int b){
     if (a == 0 || b == 0){
@@ -28,57 +30,6 @@ void tri(float eps, float a, float b, float c){
         printf("No\n");
     }
 }
-
-// void sraw(float eps, float a, float b, float c){
-//     float arr[3] = {a , b, c};
-//     for (int i = 0; i < 3; i++){
-//         for (int j = 0; j < 3; j++ ){
-//             for (int t = 0; t < 3; t++ ){
-//                 if (arr[i] != arr[t] && arr[j] != arr[t] && arr[i] != arr[j]){
-//                     if ((arr[j] * arr[j] - 4 * arr[i] * arr[t]) < eps){
-//                         printf("NO");
-//                     }
-//                     else{
-//                         printf("Yes");
-//                     }
-//                 }
-//             }
-
-//         }
-//     }
-
-// }
-
-
-// void sraw(float eps, float a, float b, float c){
-//     float arr[3] = {a, b, c};
-//     for (int i = 0; i < 3; i++){
-//         for (int j = 0; j < 3; j++){
-//             for (int t = 0; t < 3; t++){
-//                 if (i != j && j != t && i != t){
-//                     float D = arr[j]*arr[j] - 4.0 * arr[i]*arr[t];
-//                     if (D < -eps) {
-//                         printf("NO\n");
-//                     } else if (fabsf(D) <= eps)
-//                     {
-//                         float x = (-arr[j]) / (2.0 * arr[i]);
-//                         printf("%f/n", x);
-//                     }
-                    
-                    
-//                     else {
-//                         float x1 = (-arr[j] + sqrtf(D) ) / (2.0 * arr[i]);
-//                         float x2 = (-arr[j] - sqrtf(D) ) / (2.0 * arr[i]);
-//                         printf("%f, %f\n", x1, x2);
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-#include <stdio.h>
-#include <math.h>
-
 
 void sraw(float eps, float a, float b, float c){
     float arr[3] = {a, b, c};

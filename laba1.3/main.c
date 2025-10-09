@@ -18,7 +18,12 @@ int main(int argc, char *argv[]) {
     switch (flag[1]) {
         case 'q': {
             if (argc != 6) {
-                printf("ERROR: wrong number of arguments for 'q'\n");
+                printf("ERROR\n");
+                return 1;
+            }
+
+            if (strlen(argv[2]) > 10 || strlen(argv[3]) > 10 || strlen(argv[4]) > 10 ||strlen(argv[5]) > 10) {
+                printf("To much to float\n");
                 return 1;
             }
 
@@ -33,10 +38,13 @@ int main(int argc, char *argv[]) {
 
         case 'm': {
             if (argc != 4) {
-                printf("ERROR: wrong number of arguments for 'm'\n");
+                printf("ERROR\n");
                 return 1;
             }
-
+            if (strlen(argv[2]) > 10 || strlen(argv[3]) > 10) {
+                printf("To much to float\n");
+                return 1;
+            }
             int x = atoi(argv[2]);
             int y = atoi(argv[3]);
 
@@ -46,7 +54,12 @@ int main(int argc, char *argv[]) {
 
         case 't': {
             if (argc != 6) {
-                printf("ERROR: wrong number of arguments for 't'\n");
+                printf("ERROR\n");
+                return 1;
+            }
+
+            if (strlen(argv[2]) > 10 || strlen(argv[3]) > 10 || strlen(argv[4]) > 10 ||strlen(argv[5]) > 10) {
+                printf("To much to float\n");
                 return 1;
             }
 

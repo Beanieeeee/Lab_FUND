@@ -14,7 +14,19 @@ int main(void) {
     printf("Введите точность eps: ");
     scanf("%f", &eps);
 
+    float e1 = e_sum(eps);
+    float e2 = e_pred(eps);
+    float e3 = e_yr(eps);
+
     float e1 = ln_sum(eps);
+    float e2 = ln_pred(eps);
+    float e3 = ln_yr(eps);
+
+    float e1 = sq_sum(eps);
+    float e2 = sq_pred(eps);
+    float e3 = e_yr(eps);
+
+     float e1 = ln_sum(eps);
     float e2 = e_pred(eps);
     float e3 = e_yr(eps);
 
