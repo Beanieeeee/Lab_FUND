@@ -1,0 +1,3 @@
+./app.out -q 1e-6 1 -3 2
+./app.out -q 1e-6 1 2 1
+./app.out -q 1e-6 1 0 1

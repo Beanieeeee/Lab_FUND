@@ -1,0 +1,4 @@
+Hello123
+A1b2C3
+42Hello42!
+NoDigits
