@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "func.h"
 
 int main(int argc, char *argv[]) {
@@ -9,24 +6,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    char *flag = argv[1];
-    int with_n = (flag[1] == 'n'); 
-    char action = with_n ? flag[2] : flag[1];
+    char *in = argv[1];
+    char *out = argv[2];
 
-    const char *input = argv[2];
-    char output_name[256];
-    const char *output;
-
-    if (with_n) {
-        if (argc < 4) {
-            printf("Не указан выходной файл!\n");
-            return 1;
-        }
-        output = argv[3];
-    } else {
-        snprintf(output_name, sizeof(output_name), "out_%s", input);
-        output = output_name;
-    }
 
     FILE *in = fopen(input, "r");
     if (!in) {
@@ -34,28 +16,25 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    FILE *out = fopen(output, "w");
-    if (!out) {
+    FILE *out = fopen(input, "w");
+    if (!in) {
         perror("Ошибка открытия выходного файла");
-        fclose(in);
         return 1;
     }
 
-    switch (action) {
-        case 'd': op_a(in, out); break;  
-        case 'i': op_b(in, out); break;   
-        case 's': op_c(in, out); break;   
-        case 'a': op_d(in, out); break;   
-        default:
-            printf("Неизвестный флаг!\n");
-            fclose(in);
-            fclose(out);
-            return 1;
+    char num[100];
+    
+    while (fscanf(in, "%99s", num) == 1) {
+        int base = max_ss(num);
+        long long val = ss_to_dec(num, base);
+        fprintf(fout, "%s %d %lld\n", num, base, val);
     }
+
+
 
     fclose(in);
     fclose(out);
 
-    printf("Готово! Результат записан в %s\n", output);
+    printf("Готово! Результат записан в %s\n", out);
     return 0;
 }
