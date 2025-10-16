@@ -28,6 +28,12 @@ int main(int argc, char *argv[]) {
             }
 
             float eps = strtof(argv[2], NULL);
+
+            if (eps <= 0.0f || eps >= 1.0f) {
+                printf("Не тот эпсилон\n");
+                return 1;
+            }
+            
             float a   = strtof(argv[3], NULL);
             float b   = strtof(argv[4], NULL);
             float c   = strtof(argv[5], NULL);
@@ -64,6 +70,12 @@ int main(int argc, char *argv[]) {
             }
 
             float eps = strtof(argv[2], NULL);
+
+            if (eps <= 0.0f || eps >= 1.0f) {
+                printf("Не тот эпсилон\n");
+                return 1;
+            }
+
             float w   = strtof(argv[3], NULL);
             float v   = strtof(argv[4], NULL);
             float z   = strtof(argv[5], NULL);
@@ -73,7 +85,7 @@ int main(int argc, char *argv[]) {
         }
 
         default:
-            printf("Error: unknown flag '%c'\n", flag[1]);
+            printf("Error");
             return 1;
     }
 

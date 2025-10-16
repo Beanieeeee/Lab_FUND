@@ -10,12 +10,12 @@ int main(int argc, char *argv[]) {
     }
 
     char *flag = argv[1];
-    int with_n = (flag[1] == 'n');    // проверяем второй символ
-    char action = with_n ? flag[2] : flag[1];
+    int with_n = (flag[1] == 'n'); 
+    char a = flag[1 + with_n];
 
-    const char *input = argv[2];
+    char *input = argv[2];
     char output_name[256];
-    const char *output;
+    char *output;
 
     if (with_n) {
         if (argc < 4) {
@@ -34,6 +34,25 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    FILE *f = fopen(output, "r");
+    if (f) {
+        int c; 
+        int count = 0;
+
+        while ((c = fgetc(f)) != EOF) {
+            count++;
+            break;
+        }
+
+        fclose(f);
+
+        if (count == 0)
+            printf("Файл пуст\n");
+        else
+            printf("Файл не пуст\n");
+    }
+
+
     FILE *out = fopen(output, "w");
     if (!out) {
         perror("Ошибка открытия выходного файла");
@@ -41,7 +60,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    switch (action) {
+    switch (a) {
         case 'd': op_a(in, out); break;  
         case 'i': op_b(in, out); break;   
         case 's': op_c(in, out); break;   
