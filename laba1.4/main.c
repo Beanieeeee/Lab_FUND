@@ -1,19 +1,6 @@
 #include "func.h" 
 
-// int main(int argc, char *argv[]) {
-//     if (argc != 2) {
-//         printf("ERROR");
-//         return 1;
-//     }
-//     double eps = atof(argv[1]);  
-//     return 0;
-// }
-
-
-
-
-
-int main(void) {
+int main() {
     float eps;
 
     printf("Введите точность eps: ");
@@ -23,7 +10,6 @@ int main(void) {
     printf("Не тот эпсилон\n");
     return 1;
     }
-
 
     float e1 = e_sum(eps);
     float e2 = e_pred(eps);

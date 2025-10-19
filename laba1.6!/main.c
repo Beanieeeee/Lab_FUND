@@ -6,6 +6,12 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     double eps = atof(argv[1]);
+
+    if (eps <= 1e-8 || eps >= 10 ){
+        printf("Эпсилон не подходит\n");
+        return 1;
+    }
+
     double a = 0.0, b = 1.0;
 
     printf("I1 = %.10f\n", trapezoid(f1, 0.0, 1.0, eps));
